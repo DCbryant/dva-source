@@ -17,5 +17,9 @@ export default function prefixNamespace (model) {
     model.reducers = prefix(model.reducers, model.namespace)
   }
 
+  if (model.effects) {
+    model.effects = prefix(model.effects, model.namespace)
+  }
+
   return model
 }

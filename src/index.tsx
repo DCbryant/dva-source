@@ -11,6 +11,12 @@ app.model({
         number: state.number + 1
       };
     }
+  },
+  effects: { 
+    *asyncAdd(action, {call, put}) {
+      yield call(delay, 2000)
+      yield put({type: 'counter/add'})
+    }
   }
 });
 
@@ -19,8 +25,17 @@ function Counter(props: any) {
     <div>
       <p>{props.number}</p>
       <button onClick={() => props.dispatch({ type: "counter/add" })}>+</button>
+      <button onClick={() => props.dispatch({ type: "counter/asyncAdd" })}>asyncAdd</button>
     </div>
   );
+}
+
+function delay(ms) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve()
+    }, ms);
+  })
 }
 
 const ConnectedCounter = connect((state: any) => state.counter)(Counter);

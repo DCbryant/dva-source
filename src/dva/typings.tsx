@@ -43,7 +43,7 @@ export interface Model {
   namespace: string,
   state?: any,
   reducers?: ReducersMapObject | ReducersMapObjectWithEnhancer,
-  effect?: EffectsMapObject,
+  effects?: EffectsMapObject,
   subscriptions?: SubscriptionsMapObject
 }
 
