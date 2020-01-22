@@ -1,5 +1,5 @@
 import React from "react";
-import dva, { connect } from "dva";
+import dva, { connect } from "./dva";
 const app = dva();
 
 app.model({
@@ -14,7 +14,7 @@ app.model({
   }
 });
 
-function Counter(props) {
+function Counter(props: any) {
   return (
     <div>
       <p>{props.number}</p>
@@ -23,6 +23,6 @@ function Counter(props) {
   );
 }
 
-const ConnectedCounter = connect(state => state.counter)(Counter);
+const ConnectedCounter = connect((state: any) => state.counter)(Counter);
 app.router(() => <ConnectedCounter />);
 app.start("#root");
